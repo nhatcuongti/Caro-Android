@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "608450256144",
+    "firebase_url": "https://caroonline-dab15-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "caroonline-dab15",
+    "storage_bucket": "caroonline-dab15.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:608450256144:android:06566cf600403852cdd995",
+        "android_client_info": {
+          "package_name": "com.example.myapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "608450256144-f14t8351cku5u1rpbbpdjt9tehu8v081.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCrHJDKLqitBONR2JpI5Z65N7t4T1fmg4E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "608450256144-f14t8351cku5u1rpbbpdjt9tehu8v081.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
