@@ -6,7 +6,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 
+import com.example.myapplication.Interface.EventAfterListen;
 import com.example.myapplication.databinding.ActivityTrangMenuBinding;
+import com.example.myapplication.model.Match;
+import com.example.myapplication.model.MatchDatabase;
+import com.example.myapplication.model.User;
 
 public class TrangMenu extends AppCompatActivity {
 
@@ -21,8 +25,28 @@ public class TrangMenu extends AppCompatActivity {
         binding.btnStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(TrangMenu.this, TranDau.class);
-                startActivity(intent);
+                startGame();
+            }
+        });
+    }
+
+    public void startGame(){
+        // Find Match
+        MatchDatabase.getInstance().listenCheckFindingMatch(new EventAfterListen() {
+            @Override
+            public void getObjectAfterEvent(Object o) {
+                Boolean isHavingFindingMatch = (o != null) ? true : false;
+                if (isHavingFindingMatch) { // Nếu tìm thấy trận đấu đang chờ
+                    Match match = (Match) o;
+                    User user = User.getCurrentUser();
+                    match.setUser2(user.getUsername());
+                    MatchDatabase.getInstance().updateMatch(match);
+                }
+                else { // Nếu không tìm thấy trận đấu đang chờ
+//                    MatchDatabase.getInstance().createMatch();
+                    User user = User.getCurrentUser();
+                    MatchDatabase.getInstance().createMatch(user.getUsername());
+                }
             }
         });
     }

@@ -31,14 +31,13 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imageView2"
         app:layout_constraintBottom_toTopOf="@id/btnPlayGame"
-        android:layout_marginBottom="10dp"
         app:srcCompat="@drawable/game_demo" />
 
     <Button
         android:id="@+id/btnPlayGame"
         android:layout_width="160dp"
         android:layout_height="55dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="10dp"
         android:background="@drawable/custom_button"
         android:text="Chơi"
         android:textAllCaps="false"
