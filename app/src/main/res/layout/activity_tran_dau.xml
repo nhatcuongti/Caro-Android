@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="#fcf9d8"
     android:descendantFocusability="blocksDescendants"
-    tools:context=".TranDau">
+    tools:context=".TranDauActivity">
 
     <GridView
         android:id="@+id/gridBanCo2"

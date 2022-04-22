@@ -3,6 +3,7 @@ package com.example.myapplication.model;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 import com.example.myapplication.Interface.EventAfterListen;
 import com.google.firebase.database.DataSnapshot;
@@ -54,10 +55,26 @@ public class MatchDatabase {
         });
     }
 
-    public void updateMatch(Match match){
+    public void updateMatch(Match match, EventAfterListen eventAfterListen){
         String path = "/Match";
         DatabaseReference databaseReference = firebaseDatabase.getReference(path).child(match.getID());
-        databaseReference.updateChildren(match.toMap());
+        databaseReference.updateChildren(match.toMap(), new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                eventAfterListen.getObjectAfterEvent(null);
+            }
+        });
+    }
+
+    public void removeMatch(String idMatch, EventAfterListen eventAfterListen){
+        String path = "/Match";
+        DatabaseReference databaseReference = firebaseDatabase.getReference(path).child(idMatch);
+        databaseReference.removeValue(new DatabaseReference.CompletionListener() {
+            @Override
+            public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                eventAfterListen.getObjectAfterEvent(null);
+            }
+        });
     }
 
     public void getLastMatch(EventAfterListen eventAfterListen){
@@ -83,7 +100,7 @@ public class MatchDatabase {
         });
     }
 
-    public void createMatch(String user1){
+    public void createMatch(String user1, EventAfterListen eventAfterListen){
         getLastMatch(new EventAfterListen() {
             @Override
             public void getObjectAfterEvent(Object o) {
@@ -93,8 +110,37 @@ public class MatchDatabase {
                 String ID = String.valueOf(Integer.valueOf(lastID).intValue() + 1);
 
                 Match match = new Match(ID, user1, "", 0);
-                databaseReference.child(ID).setValue(match.toMap());
+                databaseReference.child(ID).setValue(match.toMap(), new DatabaseReference.CompletionListener() {
+                    @Override
+                    public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
+                        eventAfterListen.getObjectAfterEvent(match);
+                    }
+                });
             }
         });
+    }
+
+    public void checkFoundMatch(String idMatch, EventAfterListen eventAfterListen){
+        String path = "/Match/" + idMatch;
+        DatabaseReference databaseReference = firebaseDatabase.getReference(path);
+        ValueEventListener eventListener = new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Match match = snapshot.getValue(Match.class);
+
+                if (!match.getUser2().equals("")){
+                    eventAfterListen.getObjectAfterEvent(match);
+                    databaseReference.removeEventListener(this);
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        };
+
+        databaseReference.addValueEventListener(eventListener);
     }
 }

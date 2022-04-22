@@ -5,7 +5,11 @@
       <map>
         <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/activity_dang_ky.xml" value="0.23229166666666667" />
         <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/activity_dang_nhap.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/activity_main.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/activity_tran_dau.xml" value="0.24635416666666668" />
         <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/activity_trang_chu.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/activity_trang_menu.xml" value="0.24635416666666668" />
+        <entry key="..\:/Users/SU HAO/AndroidStudioProjects/Caro_Online/app/src/main/res/layout/dialog_tim_tran_dau.xml" value="0.24635416666666668" />
       </map>
     </option>
   </component>

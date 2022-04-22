@@ -75,11 +75,14 @@
         android:id="@+id/registerBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@drawable/custom_button"
         app:layout_constraintRight_toRightOf="@id/imgTittle"
         app:layout_constraintTop_toBottomOf="@id/retypePassword"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintVertical_bias="0.3"
         android:layout_margin="10dp"
+        android:textSize="30sp"
+        android:textColor="#ff9f04"
         android:text="Đăng ký"/>
 
     <ProgressBar

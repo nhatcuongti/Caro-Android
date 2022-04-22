@@ -11,6 +11,7 @@ import android.widget.Toast;
 
 import com.example.myapplication.Interface.EventAfterListen;
 import com.example.myapplication.databinding.ActivityDangNhapBinding;
+import com.example.myapplication.model.Match;
 import com.example.myapplication.model.MatchDatabase;
 import com.example.myapplication.model.User;
 import com.example.myapplication.model.UserDatabase;
@@ -29,6 +30,13 @@ public class DangNhapActivity extends AppCompatActivity {
         binding = ActivityDangNhapBinding.inflate(getLayoutInflater());
         View view = binding.getRoot();
         setContentView(view);
+
+        MatchDatabase.getInstance().checkFoundMatch("1", new EventAfterListen() {
+            @Override
+            public void getObjectAfterEvent(Object o) {
+                Match match = (Match) o;
+            }
+        });
 
         binding.linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override

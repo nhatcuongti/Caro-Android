@@ -59,4 +59,14 @@ public class Match {
 
         return map;
     }
+
+    private static Match currentMatch;
+
+    public static void setCurrentMatch(Match match){
+        currentMatch = match;
+    }
+
+    public static Match getCurrentMatch(){
+        return currentMatch;
+    }
 }

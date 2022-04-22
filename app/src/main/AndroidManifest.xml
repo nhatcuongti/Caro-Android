@@ -19,7 +19,7 @@
             android:name=".TrangMenu"
             android:exported="false" />
         <activity
-            android:name=".TranDau"
+            android:name=".TranDauActivity"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

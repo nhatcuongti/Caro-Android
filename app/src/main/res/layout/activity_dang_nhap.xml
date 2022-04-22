@@ -10,8 +10,11 @@
         android:id="@+id/imgTittle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@drawable/name_game"
-        android:layout_margin="10dp"/>
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="10dp"
+        android:layout_marginBottom="10dp"
+        android:background="@drawable/name_game" />
 
     <TextView
         android:id="@+id/textTittle"
@@ -60,10 +63,13 @@
         android:id="@+id/loginBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Đăng nhập"
-        android:layout_marginTop="60dp"
+        android:background="@drawable/custom_button"
+        android:layout_below="@id/linkToRegister"
         android:layout_marginHorizontal="10dp"
-        android:layout_below="@id/linkToRegister"/>
+        android:layout_marginTop="60dp"
+        android:textSize="30sp"
+        android:textColor="#ff9f04"
+        android:text="Đăng nhập" />
 
     <ProgressBar
         android:id="@+id/progressBarWaiting"
