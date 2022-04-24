@@ -1,11 +1,16 @@
 package com.example.myapplication.model;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class Match {
     private String ID, User1, User2;
     private int Winner;
+    ArrayList<Move> Move;
+    String nextMove;
+//    ArrayList<Move> listMove;
 
     public Match(){
 
@@ -50,12 +55,30 @@ public class Match {
         Winner = winner;
     }
 
+    public ArrayList<com.example.myapplication.model.Move> getMove() {
+        return Move;
+    }
+
+    public void setMove(ArrayList<com.example.myapplication.model.Move> move) {
+        Move = move;
+    }
+
+    public void setNextMove(String nextMove) {
+        this.nextMove = nextMove;
+    }
+
+    public String getNextMove() {
+        return nextMove;
+    }
+
     public Map<String, Object> toMap(){
         Map<String, Object> map = new HashMap<>();
         map.put("ID" , ID);
         map.put("User1", User1);
         map.put("User2", User2);
         map.put("Winner", 0);
+        map.put("Move", Move);
+        map.put("nextMove", nextMove);
 
         return map;
     }

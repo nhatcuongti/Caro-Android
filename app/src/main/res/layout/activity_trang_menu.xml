@@ -33,16 +33,16 @@
         app:layout_constraintVertical_bias="0.069" />
 
     <Spinner
-        android:id="@+id/edtTimePerPlay"
+        android:id="@+id/minuteSpinner"
         android:layout_width="67dp"
         android:layout_height="39dp"
         android:background="@drawable/input_minute"
         android:ems="10"
         android:inputType="number"
         app:layout_constraintBottom_toBottomOf="@id/phutText"
-        app:layout_constraintHorizontal_bias="0.711"
-        app:layout_constraintLeft_toRightOf="@id/ThoiGianText"
-        app:layout_constraintRight_toLeftOf="@id/phutText"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintLeft_toLeftOf="@id/cbTinhDiem"
+        app:layout_constraintRight_toRightOf="@id/cbTinhDiem"
         app:layout_constraintTop_toTopOf="@id/phutText"
         app:layout_constraintVertical_bias="1.0" />
 
@@ -54,8 +54,9 @@
         android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="@id/ThoiGianText"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintLeft_toLeftOf="@id/cbTinhDiem"
-        app:layout_constraintRight_toRightOf="@id/cbTinhDiem"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintLeft_toRightOf="@id/minuteSpinner"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="@id/ThoiGianText"
         app:layout_constraintVertical_bias="0.709" />
 

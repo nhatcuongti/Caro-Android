@@ -31,12 +31,8 @@ public class DangNhapActivity extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
-        MatchDatabase.getInstance().checkFoundMatch("1", new EventAfterListen() {
-            @Override
-            public void getObjectAfterEvent(Object o) {
-                Match match = (Match) o;
-            }
-        });
+//        MatchDatabase.getInstance().getLastMatch(null);
+
 
         binding.linkToRegister.setOnClickListener(new View.OnClickListener() {
             @Override

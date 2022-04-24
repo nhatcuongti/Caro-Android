@@ -55,6 +55,25 @@ public class MatchDatabase {
         });
     }
 
+
+    public void listenChangedMoveMatch(String idMatch, EventAfterListen eventAfterListen){
+        String path = "/Match/" + idMatch;
+        DatabaseReference databaseReference = firebaseDatabase.getReference(path);
+
+        databaseReference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                Match match = snapshot.getValue(Match.class);
+                eventAfterListen.getObjectAfterEvent(match);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
     public void updateMatch(Match match, EventAfterListen eventAfterListen){
         String path = "/Match";
         DatabaseReference databaseReference = firebaseDatabase.getReference(path).child(match.getID());
@@ -90,6 +109,7 @@ public class MatchDatabase {
                     lastSnapshot = childSnapshot;
 
                 Match match = lastSnapshot.getValue(Match.class);
+                Log.d("GetLastMatch", "onDataChange: " + match.toString());
                 eventAfterListen.getObjectAfterEvent(match.getID());
             }
 
@@ -110,6 +130,7 @@ public class MatchDatabase {
                 String ID = String.valueOf(Integer.valueOf(lastID).intValue() + 1);
 
                 Match match = new Match(ID, user1, "", 0);
+                match.setNextMove(user1);
                 databaseReference.child(ID).setValue(match.toMap(), new DatabaseReference.CompletionListener() {
                     @Override
                     public void onComplete(@Nullable DatabaseError error, @NonNull DatabaseReference ref) {
@@ -127,6 +148,13 @@ public class MatchDatabase {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 Match match = snapshot.getValue(Match.class);
+
+                Log.d("DataChangeTag", "onDataChange: " + match);
+
+                if (match == null){
+                    databaseReference.removeEventListener(this);
+                    return;
+                }
 
                 if (!match.getUser2().equals("")){
                     eventAfterListen.getObjectAfterEvent(match);

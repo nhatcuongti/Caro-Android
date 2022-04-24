@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fcf9d8"
+    tools:context=".LichSuActivity"
+    android:orientation="vertical">
+    <ImageView
+        android:id="@+id/tittleImage"
+        android:layout_width="match_parent"
+        android:layout_height="126dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="32dp"
+        app:srcCompat="@drawable/name_game" />
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingHorizontal="20dp"
+        android:paddingTop="50dp">
+
+        <TextView
+            android:id="@+id/numberWinningMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số trận thắng : 5"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            app:layout_constraintHorizontal_bias="0"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/numberLosingMatch"/>
+
+        <TextView
+            android:id="@+id/numberLosingMatch"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Số trận thua : 5"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/numberWinningMatch"
+            app:layout_constraintLeft_toLeftOf="@id/numberWinningMatch"
+            app:layout_constraintRight_toRightOf="@id/numberWinningMatch"
+            app:layout_constraintBottom_toTopOf="@id/userScore"
+            app:layout_constraintHorizontal_bias="0"/>
+
+        <TextView
+            android:id="@+id/userScore"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điểm : 0"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toBottomOf="@id/numberLosingMatch"
+            app:layout_constraintLeft_toLeftOf="@id/numberLosingMatch"
+            app:layout_constraintRight_toRightOf="@id/numberLosingMatch"
+            app:layout_constraintHorizontal_bias="0"
+            app:layout_constraintBottom_toBottomOf="parent"/>
+
+        <TextView
+            android:id="@+id/userRank"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Hạng : 100"
+            android:textSize="20sp"
+            android:textColor="@color/black"
+            android:layout_marginBottom="10dp"
+            app:layout_constraintTop_toTopOf="@id/userScore"
+            app:layout_constraintLeft_toLeftOf="@id/userImage"
+            app:layout_constraintRight_toRightOf="@id/userImage"
+            app:layout_constraintBottom_toBottomOf="@id/userScore"
+            app:layout_constraintVertical_bias="0"/>
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/userImage"
+            android:layout_width="100dp"
+            android:layout_height="0dp"
+
+            android:background="@drawable/ic_baseline_account_circle_24"
+            app:layout_constraintTop_toTopOf="@id/numberWinningMatch"
+            app:layout_constraintLeft_toRightOf="@id/numberWinningMatch"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/numberLosingMatch"/>
+
+
+
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/historyRecycleView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="20dp"/>
+
+
+</LinearLayout>

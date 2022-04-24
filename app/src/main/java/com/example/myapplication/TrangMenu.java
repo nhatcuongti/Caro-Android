@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 
 import com.example.myapplication.Interface.EventAfterListen;
 import com.example.myapplication.databinding.ActivityTrangMenuBinding;
@@ -25,16 +26,29 @@ public class TrangMenu extends AppCompatActivity {
         View view = binding.getRoot();
         setContentView(view);
 
+        String[] minuteList = {"1", "2", "5"};
+        ArrayAdapter ad = new ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, minuteList);
+        binding.minuteSpinner.setAdapter(ad);
+
         binding.btnStartGame.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 startGame();
             }
         });
+
+        binding.btnLichSu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(TrangMenu.this, LichSuActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 
-    public void moveToMenuActivity(Match match){
-        Intent intent = new Intent(TrangMenu.this, TranDauActivity.class);
+    public void moveToTranDauActivity(Match match){
+        Intent intent = new Intent(TrangMenu.this, MainActivity.class);
+        match.setNextMove(match.getUser1());
         Match.setCurrentMatch(match);
         startActivity(intent);
     }
@@ -82,7 +96,7 @@ public class TrangMenu extends AppCompatActivity {
                     MatchDatabase.getInstance().updateMatch(match, new EventAfterListen() {
                         @Override
                         public void getObjectAfterEvent(Object o) {
-                            moveToMenuActivity(match);
+                            moveToTranDauActivity(match);
                         }
                     });
                 }
@@ -99,7 +113,8 @@ public class TrangMenu extends AppCompatActivity {
                                 @Override
                                 public void getObjectAfterEvent(Object o) {
                                     dialog.dismiss();
-                                    moveToMenuActivity(match);
+                                    Match matchFull = (Match) o;
+                                    moveToTranDauActivity(matchFull);
                                 }
                             });
                         }
